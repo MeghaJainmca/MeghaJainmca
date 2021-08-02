@@ -1,0 +1,60 @@
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card">
+      <div class="card-header"><i class="fa "></i> Food Joints </div>
+
+      <div>
+        <div class="card-body">
+          <div _ngcontent-kwf-c90="" dropdown="" class="btn-group">
+
+            <form (submit)="getFoodJointsBasedOnCityId()">
+              <table>
+                <tr>
+                  <td>
+                    <select id="ddlCity" [(ngModel)]="cityId" name='ddlbankcity'>
+                      <option value=0>Select City</option>
+                      <option class='option' *ngFor="let city of cityData" [ngValue]="city.id">
+                        {{ city.cityName }}
+                      </option>
+                    </select>
+                  </td>
+                  <td></td>
+                  <td> <button class="btn-dark">Submit</button></td>
+                </tr>
+              </table>
+            </form>
+          </div>
+
+        </div>
+      </div>
+      <div class="card-body">
+        <table class="table table-bordered table-striped table-sm">
+          <thead>
+            <tr>            
+              <th>Food Joint Name</th>
+              <th>Food Type</th>
+              <th>Address</th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let foodJoint of foodJointData">
+              <td>{{foodJoint.jointName}}</td>
+              <td>{{foodJoint.foodType}}</td>
+              <td>{{foodJoint.address}}</td>
+              <td>
+                <a [title]="foodJoint.jointName + 'Detail'"
+                  [routerLink]="['/food-joint-details/', foodJoint.id]">Details</a>
+              </td>
+              <td>
+                <a [title]="foodJoint.jointName + 'Detail'"
+                  [routerLink]="['/remove-food-joint/', foodJoint.id]">Delete</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

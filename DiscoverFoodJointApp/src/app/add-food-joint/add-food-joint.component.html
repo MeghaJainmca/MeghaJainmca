@@ -1,0 +1,78 @@
+<div class="row justify-content-center">
+  <div class="col-md-6">
+
+    <div class="card">
+      <div class="card-header"><strong>Add New Food Joint</strong> </div>
+      <div class="card-body">
+        <form [formGroup]="foodJointFrom" (ngSubmit)="addNewFoodJoint()">
+          <div class="form-group">
+            <label for="foodJointName" class="sr-only">Food Joint Name</label>
+            <input type="text" formControlName="jointName" placeholder="Enter food joint name.." autocomplete="name"
+              class="form-control" />
+            <div
+              *ngIf="myForm.jointName.invalid && (myForm.jointName.dirty || myForm.jointName.touched || this.submitted)"
+              class="alert alert-danger">
+              <div *ngIf="myForm.jointName.errors?.required">
+                Name is required.
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="foodType" class="sr-only">Food Type</label>
+            <input type="text" formControlName="foodType" placeholder="Enter food type.." autocomplete="name"
+              class="form-control" />
+            <div *ngIf="myForm.foodType.invalid && (myForm.foodType.dirty || myForm.foodType.touched || this.submitted)"
+              class="alert alert-danger">
+              <div *ngIf="myForm.foodType.errors?.required">
+                Food type is required (Veg/NonVeg/Both).
+              </div>
+
+              <div *ngIf="myForm.foodType.errors?.pattern">
+                Enter a valid food type(Veg/NonVeg/Both).
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="address" class="sr-only">Address</label>
+            <input type="text" formControlName="address" placeholder="Enter address.." autocomplete="name"
+              class="form-control" />
+            <div *ngIf="myForm.address.invalid && (myForm.address.dirty || myForm.address.touched || this.submitted)"
+              class="alert alert-danger">
+              <div *ngIf="myForm.address.errors?.required">
+                Address is required.
+              </div>
+
+              <div *ngIf="myForm.address.errors?.pattern">
+                Enter a valid address.
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="address" class="sr-only">City to belongs:</label>
+            <div _ngcontent-kwf-c90="" dropdown="" class="btn-group">
+            
+              <select id="ddlCity" formControlName="cityId" name='ddlbankcity'>
+                <option value="" selected>Choose...</option>
+                <option class='option' *ngFor="let city of cityData" [ngValue]="city.id">
+                  {{ city.cityName }}
+                </option>
+              </select>
+            </div>
+              <div *ngIf="myForm.cityId.invalid && (myForm.cityId.dirty || myForm.cityId.touched || this.submitted)"
+                class="alert alert-danger">
+                <div *ngIf="myForm.cityId.errors?.required">
+                  Please select valid city.
+                </div>
+              </div>
+           
+
+          </div>
+
+
+          <div class="form-group">
+            <button class="btn btn-secondary btn-lg  btn-dark" type="submit">Add</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>

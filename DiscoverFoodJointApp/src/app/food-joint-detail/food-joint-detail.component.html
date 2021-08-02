@@ -1,0 +1,36 @@
+<div class="row">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header"><i class="fa "></i> Food Joint Details </div>
+        <div class="card-body">
+          <table class="table table-bordered table-striped table-sm" *ngIf="this.foodJoint">
+            <tr>
+              <td>Food Joint Name:</td>
+              <td>{{this.foodJoint.jointName}}</td>
+            </tr>
+            <tr>
+              <td>Food type provided:</td>
+              <td>{{this.foodJoint.foodType}}</td>
+            </tr>
+            <tr>
+              <td>Address</td>
+              <td>{{this.foodJoint.address}}</td>
+            </tr>
+            <tr>
+              <td>City Belongs to: </td>
+              <td>{{this.foodJoint.cityDetail}}</td>
+            </tr>  
+        </table>
+           <div class="form-group">
+            <button class="btn btn-secondary btnMargin btn-lg  btn-dark" type="button" [routerLink]="['/food-joint-list']">Back To
+              List</button>
+  
+            <button class="btn btn-secondary btnMargin btn-lg  btn-dark" type="button"
+             [routerLink]="['/update-food-joint/', this.foodJoint.id]">Update</button>
+         
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
